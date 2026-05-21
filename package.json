@@ -1,0 +1,22 @@
+{
+  "name": "duw-traba-pratico-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "javascript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch" : "watch --db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GabrielVieiraDeSouza/Trabalho-Pr-tico-1---Exibi-o-e-navega-o-din-micas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GabrielVieiraDeSouza/Trabalho-Pr-tico-1---Exibi-o-e-navega-o-din-micas/issues"
+  },
+  "homepage": "https://github.com/GabrielVieiraDeSouza/Trabalho-Pr-tico-1---Exibi-o-e-navega-o-din-micas#readme"
+}
