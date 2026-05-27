@@ -21,9 +21,19 @@ html a {
   color: inherit;
 }
 
-.Logo{
-  margin-left: 12rem;
+
+@media (min-width: 992px){
+    .Logo {
+      margin: 4rem;
+    }
 }
+@media (min-width: 992px){
+    .Logo {
+      margin: 2rem;
+    }
+}
+
+
 .imgCarrosel {
   object-fit:initial;
 }
@@ -33,9 +43,12 @@ html a {
   object-fit:fill;
 }
 
+
+
 .card-body{
-  height: 15rem;
+  height: 18rem;
 }
+
 
 .TituloCarrosel{
   -webkit-text-stroke: 0.05rem #000000;
