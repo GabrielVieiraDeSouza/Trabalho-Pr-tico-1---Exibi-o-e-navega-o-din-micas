@@ -2,22 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WikiMedia</title>
-    <header>
-        <div class="container py-1">
-            <input type="text" class="w-100 my-1" placeholder="Digite o Filme ou Serie" id="Search">
-        </div>
-        <a href="index.html" class="d-inline Logo"><img src="Images/Logo.png" class="" alt=""></a>  
-    </header>
-</head>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WikiMedia</title>
+
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="css.css">
+    </head>
 
 <body>
+    <header>        
+        <div class="container py-2 align-items-center gap-3">
+            <div class="row">
+            <a href="/index.html" class="Logo col-6">
+                <img src="/Images/Logo.png" alt="">
+            </a>
+            <input type="text" id="Search" class="w-100 my-2" placeholder="Digite o Jogo">
+            </div>
+        </div>
+    </header>
     <!-- CCarrousel -->
-    <div class="container">
+    <div class="container my-5">
         <div id="Carrosel" class="w-100">
-            <div id="carouselExampleCaptions" class="carousel slide">
+            <div id="carouselExampleCaptions" class="carousel slide position-relative">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -25,55 +37,39 @@
                         aria-label="Slide 2"></button>
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"
-                        aria-label="Slide 4"></button>
                 </div>
 
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <a href=""><img src="Images/Forza6.jpeg" class="d-block w-100" alt="..."></a>
+                        <a href="PaginaDeDetalhes/Forza_Horizon_6/Forza_Horizon_6.html?id=5"><img
+                                src="Images/ForzaHorizon6/Forza6.jpeg" class="d-block w-100 CarImg" alt="..."></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="TituloCarrosel">Forza Horizon 6 </h2>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <p>Um rápido texto introdutorio do jogo.</p>
                         </div>
                     </div>
 
                     <div class="carousel-item">
-                        <a href=""><img src="Images/EldenRing.jpeg" class="d-block w-100" alt="..."></a>
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="TituloCarrosel">Elden Ring</h2>
-                            <p>Some representative placeholder content for the second slide.</p>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <a href=""><img src="Images/LegoBatmanLODK.jpeg" class="d-block w-100" alt="..."></a>
+                        <a href="/PaginaDeDetalhes/LegoBatman_LODK/LegoBatman_LODK.html?id=6"><img
+                                src="Images/LegoBatmanLODK/LegoBatmanLODK.jpeg" class="d-block w-100 CarImg" alt="..."></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="TituloCarrosel">Lego Batman Legacy of The Dark Knight</h2>
-                            <p>Some representative placeholder content for the third slide.</p>
+                            <p>Um rápido texto introdutorio do jogo.</p>
                         </div>
                     </div>
 
                     <div class="carousel-item">
-                        <a href=""><img src="Images/DeathStranding2.jpeg" class="d-block w-100" alt="..."></a>
+                        <a href="/PaginaDeDetalhes/DeathStranding2/DeathStranding2.html?id=1"><img
+                                src="Images/DeathStranding2/DeathStranding2.jpeg" class="d-block w-100 CarImg" alt="..."></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="TituloCarrosel">Death Stranding 2</h2>
-                            <p>Um guia da platina de mais um acerto de Hideo Kojima</p>
+                            <p>Um rápido texto introdutorio do jogo</p>
                         </div>
                     </div>
 
                 </div>
 
-                <!-- Botões de avnaçar o carrosel-->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
+
                 </button>
             </div>
         </div>
@@ -84,51 +80,59 @@
     <section id="CorpoCardsContainerCards" class="">
         <div class="row  my-5 mx-5">
 
-            <div class="col-md-3 col-12 py-2 CardsJogos">
+            <div class="col-md-2 col-12 py-2 CardsJogos">
                 <div class="card CartaMedia" id="0">
-                    <img src="Images/Death_Stranding_1.jpeg" class="card-img-top" alt="...">
+                    <img src="Images/DeathStranding/Logo.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <a href="" class="BotatoRedirecionar">
                             <h3 class="card-title text-center">Death Stranding </h4>
                                 <h5 class="card-subtitle text-center fs-5 py-2  ">Kojima Productions</h5>
-                                <p class="card-text py-3">Um rapido texto introdutorio sobre conceitos para entendedr
-                                    melhor o
-                                    jogo.</p>
+                                <p class="card-text py-3">Um rapido texto introdutorio sobre conceitos para entender melhor o jogo.</p>
                         </a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-12 py-2 CardsJogos">
+            <div class="col-md-2 col-12 py-2 CardsJogos">
                 <div class="card CartaMedia" id="2">
-                    <img src="Images/Metal_Gear_V.jpeg" class="card-img-top" alt="...">
+                    <img src="Images/Metal_Gear_V/Metal_Gear_V.jpeg" class="card-img-top" alt="...">
                     <div class="card-body py-4">
                         <a href="" class="BotatoRedirecionar">
                             <h4 class="card-title text-center">Metal Gear V The Phantom Pain</h4>
                             <h5 class="card-subtitle text-center fs-5 py-2">Kojima Productions</h5>
-                            <p class="card-text py-3">Some quick example text to build on the card title and make up the
-                                bulk
-                                ofthe card's content.</p>
+                            <p class="card-text py-3">Um rápido texto introdutorio do jogo.</p>
                         </a>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col-md-3 col-12 py-2 CardsJogos">
-                <div class="card CartaMedia " id="5">
-                    <img src="Images/Guitar_Hero_Metallicajpeg.jpeg" class="card-img-top" alt="...">
+            <div class="col-md-2 col-12 py-2 CardsJogos">
+                <div class="card CartaMedia " id="4">
+                    <img src="Images/GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <a href="" class="BotatoRedirecionar">
                             <h4 class="card-title text-center ">Guitar Hero Metallica</h4>
                             <h5 class="card-subtitle text-center fs-5 py-2">Neversoft Entertainment</h5>
-                            <p class="card-text py-3">Some quick example text to build on the card title and make up the
-                                bulk of
-                                thecard's content.</p>
+                            <p class="card-text py-3">Um rápido texto introdutorio do jogo.</p>
                         </a>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-2 col-12 py-2 CardsJogos">
+                <div class="card CartaMedia " id="3">
+                    <img src="Images/Metal_Gear_III/Metal_Gear_III.jpeg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="" class="BotatoRedirecionar">
+                            <h4 class="card-title text-center ">Metal Gear III Snake Eater</h4>
+                            <h5 class="card-subtitle text-center fs-5 py-2">Konami Computer Entertainment Japan</h5>
+                            <p class="card-text py-3">Um rápido texto introdutorio do jogo.</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </section>
@@ -142,20 +146,18 @@
                 </ul>
                 <p class="text-center">©2026, WikiMedia</p>
                 <h5 class="text-center">Gabriel Vieira de Souza</h5>
-                                <a href="https://github.com/Gabriel-9306" class="align-self-center"><img
+                <span>Aluno de ADS p</span>
+                <a href="https://github.com/Gabriel-9306" class="align-self-center"><img
                         src="Images/GitHub_Invertocat_Black_Clearspace.png" style="width: 3rem;" alt=""></a>
             </footer>
         </div>
     </footer>
 
 
-    <link rel="stylesheet" href="css.css">
     <script src="javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </body>
 
 </html>

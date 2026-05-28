@@ -1,0 +1,147 @@
+
+body {
+    background: linear-gradient(180deg, #1f232b, #13151d);
+    color: #eaeaea;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    line-height: 1.6;
+}
+
+
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+a:hover,
+a:focus,
+a:visited {
+    text-decoration: none !important;
+    color: inherit !important;
+    outline: none;
+}
+
+
+
+
+
+#Search {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+
+    padding: 10px 12px 10px 35px;
+    border-radius: 10px;
+
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg');
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+
+    outline: none;
+    transition: 0.3s;
+}
+
+#Search:focus {
+    border-color: #402cda;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
+}
+
+
+h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+span {
+    color: #ffffff;
+    font-size: 1.05rem;
+}
+
+
+.C1 {
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+.card {
+    background: #161a22;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    overflow: hidden;
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+}
+
+.card-img-top {
+    height: 18rem;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.03);
+}
+
+
+.CartaMedia {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.CartaMedia .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+
+#TituloSemelhante {
+    font-size: 1.1rem;
+    font-weight: 600;
+    min-height: 3.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#EstudioSemelhante {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+
+
+section {
+    margin-top: 3rem;
+}
+
+
+
+footer {
+    color: #ffffff;
+}
+
+#Conteudo,
+#HistoriaDoEstudio * {
+    color: #ffffff !important;
+}
+
+@media (max-width: 992px) {
+    span {
+        text-align: justify;
+    }
+
+    .Logo {
+        margin: 0.5rem;
+    }
+}

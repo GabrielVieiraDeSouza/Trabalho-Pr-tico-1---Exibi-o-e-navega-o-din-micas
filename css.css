@@ -8,7 +8,7 @@ html body{
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg');
   background-size: 1rem;
   background-repeat: no-repeat;
-  background-position: 0.5rem center; /* Adjust x-offset and vertical alignment */
+  background-position: 0.5rem center; 
   
   padding-left: 30px; 
   
@@ -52,4 +52,8 @@ html a {
 
 .TituloCarrosel{
   -webkit-text-stroke: 0.05rem #000000;
+}
+
+.CarImg{
+  border-radius: 16px;
 }
