@@ -3,6 +3,9 @@
                 {
                     "Nome": "Death Stranding",
                     "Descricao": "Jogando como Sam Bridges, sua missão é entregar esperança à humanidade ao conectar os sobreviventes de uma América devastada. Você conseguirá reunir este mundo destruído, um passo de cada vez?",
+                    "DicionarioDescricoes" : {
+                        "HomePage" : "Rapido texto introdutorio sobre o jogo"
+                    },
                     "Meta" : "/PaginaDeDetalhes/DeathStranding/DeathStranding.html",
                     "Semelhantes" : [1,2,3,4],
                     "LogoCard" : "/Images/DeathStranding/Logo.jpeg",
@@ -11,6 +14,9 @@
                 {
                     "Nome": "Death Stranding 2",
                     "Descricao": "Com companheiros ao seu lado, Sam inicia uma nova jornada para salvar a humanidade da extinção. Junte-se a eles na viagem por um mundo problemático repleto de inimigos sobrenaturais, obstáculos e uma dúvida inquietante: deveríamos ter nos conectado?",
+                    "DicionarioDescricoes" : {
+                        "HomePage" : "Rapido texto introdutorio sobre o jogo"
+                    },
                     "Meta" : "/PaginaDeDetalhes/DeathStranding2/DeathStranding2.html",
                     "Semelhantes" : [0,2,3,4],
                     "LogoCard" : "/Images/DeathStranding2/DeathStranding2.jpeg",
@@ -19,6 +25,9 @@
                 {
                     "Nome": "Metal Gear V The Phantom Pain",
                     "Descricao": "Inaugurando uma nova era para a franquia METAL GEAR com tecnologia de ponta alimentada pelo Fox Engine, METAL GEAR SOLID V: The Phantom Pain irá proporcionar aos jogadores uma experiência de jogo de primeira linha com liberdade tática para realizar missões em mundo aberto.",
+                    "DicionarioDescricoes" : {
+                        "HomePage" : "Rapido texto introdutorio sobre o jogo"
+                    },
                     "Meta" : "/PaginaDeDetalhes/Metal_Gear_V/Metal_Gear_V.html",
                     "Semelhantes" : [0,1,3],
                     "LogoCard" : "/Images/Metal_Gear_V/Metal_Gear_V.jpeg",
@@ -27,6 +36,9 @@
                 {
                     "Nome": "Metal Gear Solid III Snake Eater",
                     "Descricao": "Metal Gear Solid 3: Snake Eater é a origem da história de Naked Snake e seu mentor, The Boss, e o quinto título da série METAL GEAR.",
+                    "DicionarioDescricoes" : {
+                        "HomePage" : "Rapido texto introdutorio sobre o jogo"
+                    },
                     "Meta" :  "/PaginaDeDetalhes/Metal_Gear_III/Metal_Gear_III.html",
                     "Semelhantes" : [4],
                     "LogoCard" : "/Images/Metal_Gear_III/Metal_Gear_III.jpeg",
@@ -35,6 +47,9 @@
                 {
                     "Nome": "Guitar Hero Metallica",
                     "Descricao": "Guitar Hero: Metallica is a 2009 rhythm game developed by Neversoft and published by Activision, serving as the seventh installment in the Guitar Hero series and the second to focus exclusively on a single band, following Guitar Hero: Aerosmith.  Released for PlayStation 2, PlayStation 3, Wii, and Xbox 360, the game is based on the Guitar Hero World Tour engine, supporting lead and bass guitar, drums, and vocals for up to four players. ",
+                    "DicionarioDescricoes" : {
+                        "HomePage" : "Rapido texto introdutorio sobre o jogo"
+                    },
                     "Meta" : "/PaginaDeDetalhes/Guitar_Hero_Metallica/Guitar_Hero_Metallica.html",
                     "Semelhantes" : [],
                     "LogoCard" : "/Images/GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg",
@@ -43,6 +58,9 @@
                 {
                     "Nome": "Forza Horizon 6",
                     "Descricao": "Descubra as paisagens estonteantes do Japão em mais de 550 carros reais e se torne uma Lenda das corridas na maior aventura de direção em mundo aberto do Forza Horizon até agora.",
+                    "DicionarioDescricoes" : {
+                        "HomePage" : "Rapido texto introdutorio sobre o jogo"
+                    },
                     "Meta" : "/PaginaDeDetalhes/Forza_Horizon_6/Forza_Horizon_6.html",
                     "Semelhantes" : [],
                     "LogoCard" : "/Images/ForzaHorizon6/Background.jpg",
@@ -51,6 +69,9 @@
                 {
                     "Nome": "Batman Legacy of The Dark Knight",
                     "Descricao": "Assuma o papel do Cavaleiro das Trevas e viva a história essencial do Batman em uma aventura ousada e cheia de ação, com combate intenso, uma Gotham City de mundo aberto e o charme característico da LEGO que os fãs conhecem e amam.",
+                    "DicionarioDescricoes" : {
+                        "HomePage" : "Rapido texto introdutorio sobre o jogo"
+                    },
                     "Semelhantes" : [2,3],
                     "Meta" : "/PaginaDeDetalhes/LegoBatman_LODK/LegoBatman_LODK.html",
                     "LogoCard" : "/Images/LegoBatmanLODK/LegoBatmanLODK.jpeg",

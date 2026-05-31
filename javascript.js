@@ -27,7 +27,7 @@ async function CriarCard(BancoDeDados, JogoID) {
     Copia.querySelector(".card-title").textContent = BancoDeDados.Nome;
     Copia.querySelector(".CartaMedia").id = JogoID;
     Copia.querySelector(".card-subtitle").textContent = BancoDeDados.Estudio;
-    Copia.querySelector(".card-text").textContent = BancoDeDados.Descricao;
+    Copia.querySelector(".card-text").textContent = BancoDeDados.DicionarioDescricoes["HomePage"]
     Copia.querySelector(".card-img-top").src = BancoDeDados.LogoCard;
     Copia.querySelector(".BotatoRedirecionar").addEventListener("click" , () => {
         event.preventDefault();
