@@ -15,14 +15,29 @@
         <link rel="stylesheet" href="css.css">
     </head>
 
+    <template id="TemplateCard">
+        <div class="col-md-2 col-12 py-2 CardsJogos">
+            <div class="card CartaMedia" id="2">
+                <img src="Images/Metal_Gear_V/Metal_Gear_V.jpeg" class="card-img-top" alt="...">
+                <div class="card-body py-4">
+                    <a href="" class="BotatoRedirecionar">
+                        <h4 class="card-title text-center">Metal Gear V The Phantom Pain</h4>
+                        <h5 class="card-subtitle text-center fs-5 py-2">Kojima Productions</h5>
+                        <p class="card-text py-3">Um rápido texto introdutorio do jogo.</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </template>
+
 <body>
-    <header>        
+    <header>
         <div class="container py-2 align-items-center gap-3">
             <div class="row">
-            <a href="/index.html" class="Logo col-6">
-                <img src="/Images/Logo.png" alt="">
-            </a>
-            <input type="text" id="Search" class="w-100 my-2" placeholder="Digite o Jogo">
+                <a href="/index.html" class="Logo col-6">
+                    <img src="/Images/Logo.png" alt="">
+                </a>
+                <input type="text" id="Search" class="w-100 my-2" placeholder="Digite o Jogo">
             </div>
         </div>
     </header>
@@ -51,7 +66,8 @@
 
                     <div class="carousel-item">
                         <a href="/PaginaDeDetalhes/LegoBatman_LODK/LegoBatman_LODK.html?id=6"><img
-                                src="Images/LegoBatmanLODK/LegoBatmanLODK.jpeg" class="d-block w-100 CarImg" alt="..."></a>
+                                src="Images/LegoBatmanLODK/LegoBatmanLODK.jpeg" class="d-block w-100 CarImg"
+                                alt="..."></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="TituloCarrosel">Lego Batman Legacy of The Dark Knight</h2>
                             <p>Um rápido texto introdutorio do jogo.</p>
@@ -60,7 +76,8 @@
 
                     <div class="carousel-item">
                         <a href="/PaginaDeDetalhes/DeathStranding2/DeathStranding2.html?id=1"><img
-                                src="Images/DeathStranding2/DeathStranding2.jpeg" class="d-block w-100 CarImg" alt="..."></a>
+                                src="Images/DeathStranding2/DeathStranding2.jpeg" class="d-block w-100 CarImg"
+                                alt="..."></a>
                         <div class="carousel-caption d-none d-md-block">
                             <h2 class="TituloCarrosel">Death Stranding 2</h2>
                             <p>Um rápido texto introdutorio do jogo</p>
@@ -77,61 +94,8 @@
 
     </div>
 
-    <section id="CorpoCardsContainerCards" class="">
-        <div class="row  my-5 mx-5">
-
-            <div class="col-md-2 col-12 py-2 CardsJogos">
-                <div class="card CartaMedia" id="0">
-                    <img src="Images/DeathStranding/Logo.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="" class="BotatoRedirecionar">
-                            <h3 class="card-title text-center">Death Stranding </h4>
-                                <h5 class="card-subtitle text-center fs-5 py-2  ">Kojima Productions</h5>
-                                <p class="card-text py-3">Um rapido texto introdutorio sobre conceitos para entender melhor o jogo.</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 col-12 py-2 CardsJogos">
-                <div class="card CartaMedia" id="2">
-                    <img src="Images/Metal_Gear_V/Metal_Gear_V.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body py-4">
-                        <a href="" class="BotatoRedirecionar">
-                            <h4 class="card-title text-center">Metal Gear V The Phantom Pain</h4>
-                            <h5 class="card-subtitle text-center fs-5 py-2">Kojima Productions</h5>
-                            <p class="card-text py-3">Um rápido texto introdutorio do jogo.</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-md-2 col-12 py-2 CardsJogos">
-                <div class="card CartaMedia " id="4">
-                    <img src="Images/GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="" class="BotatoRedirecionar">
-                            <h4 class="card-title text-center ">Guitar Hero Metallica</h4>
-                            <h5 class="card-subtitle text-center fs-5 py-2">Neversoft Entertainment</h5>
-                            <p class="card-text py-3">Um rápido texto introdutorio do jogo.</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-2 col-12 py-2 CardsJogos">
-                <div class="card CartaMedia " id="3">
-                    <img src="Images/Metal_Gear_III/Metal_Gear_III.jpeg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <a href="" class="BotatoRedirecionar">
-                            <h4 class="card-title text-center ">Metal Gear III Snake Eater</h4>
-                            <h5 class="card-subtitle text-center fs-5 py-2">Konami Computer Entertainment Japan</h5>
-                            <p class="card-text py-3">Um rápido texto introdutorio do jogo.</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section class="">
+        <div class="row  my-5 mx-5" id="CorpoCardsContainerCards">
 
 
         </div>
