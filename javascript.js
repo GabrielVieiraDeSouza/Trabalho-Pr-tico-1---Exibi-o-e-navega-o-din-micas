@@ -10,9 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
  
 async function MetaURL(JogoID) {
     const DB = await PuxarDados();
-    console.log(DB)
     const JogoEscolhido = DB[JogoID];
-    window.location.href = JogoEscolhido.Meta + '?id=' + JogoID;
+    window.location.href = "/PaginaDeDetalhes/Template.html?ID="+ JogoID
 }
  
 async function PuxarDados() {

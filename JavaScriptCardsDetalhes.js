@@ -1,14 +1,11 @@
+let ContainerSemelhantes = document.getElementById("ContainerSemelhantesJogos")
+let TemplateCardSemelhante = document.getElementById("TemplateSemelhante")
 
-
-const ContainerSemelhantes = document.getElementById("ContainerSemelhantes")
-const TemplateCardSemelhante = document.getElementById("TemplateSemelhante")
-
-async function MetaURL(JogoID) {
+async function RedirecionarPaginaPorMetaURL(JogoID) {
     const DB = await PuxarDados()
-    console.log(JogoID)
     const JogoEscolhido = DB[JogoID]
     let URL = new URLSearchParams(JogoEscolhido.Meta)
-    window.location.href = JogoEscolhido.Meta + '?id=' + JogoID
+    window.location.href = "/PaginaDeDetalhes/Template.html?ID="+ JogoID
 }
 
 async function PuxarDados() {
@@ -25,28 +22,30 @@ async function CarregarSemelhantes(JogoID) {
     Copia.querySelector("#EstudioSemelhante").textContent = DB[JogoID].Estudio
     Copia.querySelector(".CartaMedia").id = JogoID
     Copia.querySelector(".CardsJogos").classList.remove("invisible")
-    console.log(ContainerSemelhantes)
     Copia.querySelector(".BotatoRedirecionar").addEventListener("click", () => {
-        event.preventDefault()
-        console.log("Apertado")
-        MetaURL(JogoID)
+        RedirecionarPaginaPorMetaURL(JogoID)
     })
+    
     ContainerSemelhantes.appendChild(Copia)
+    
     
 }
 
-window.onload = async () => { 
+async function CarregarPagina() {
     const SearchParams = new URLSearchParams(window.location.search)
-    const JogoID = SearchParams.get("id")
+    const JogoID = SearchParams.get("ID")
     const DB = await PuxarDados()
-    let Cont = 0;
+    document.getElementById("Titulo").textContent = DB[JogoID].Nome
+    document.getElementById("ImagemPrincipal").src = DB[JogoID].LogoCard
+    document.getElementById("Descricao").textContent = DB[JogoID].DicionarioDescricoes["HomePage"]
+}
 
+window.addEventListener("load", async () => {
+    const SearchParams = new URLSearchParams(window.location.search)
+    const JogoID = SearchParams.get("ID")
+    const DB = await PuxarDados()
+    console.log(DB[2].Semelhantes,JogoID)
     DB[JogoID]["Semelhantes"].forEach((element) => {
         CarregarSemelhantes(element)
     })
-
-    
-    
-    
-    
-}
+})
