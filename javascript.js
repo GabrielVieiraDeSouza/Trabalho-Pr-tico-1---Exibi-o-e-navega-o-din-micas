@@ -36,6 +36,7 @@ async function CriarCard(BancoDeDados, JogoID) {
     
 }
 
+
 async function CarregarCardsInicias() {
     const DB = await PuxarDados();
     for (let i = 0; i < DB.length; i++) {
