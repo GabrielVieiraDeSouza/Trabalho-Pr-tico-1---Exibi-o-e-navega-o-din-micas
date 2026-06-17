@@ -9,25 +9,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
  
 async function MetaURL(JogoID) {
-    const DB = await PuxarDados();
-    console.log(DB)
+    let DB = await PuxarDados();
     const JogoEscolhido = DB[JogoID];
-    window.location.href = JogoEscolhido.Meta + '?id=' + JogoID;
+    window.location.href = "/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
 }
  
 async function PuxarDados() {
-    const resultado = await fetch("http://localhost:3000/Midia");
-    const DB = await resultado.json();
+    let resultado = await fetch("http://localhost:3000/Midia");
+    let DB = await resultado.json();
     return DB;
 }
 
 async function CriarCard(BancoDeDados, JogoID) {
     let Copia = TemplateCard.content.cloneNode(true);
-    console.log(Copia)
     Copia.querySelector(".card-title").textContent = BancoDeDados.Nome;
     Copia.querySelector(".CartaMedia").id = JogoID;
     Copia.querySelector(".card-subtitle").textContent = BancoDeDados.Estudio;
-    Copia.querySelector(".card-text").textContent = BancoDeDados.DicionarioDescricoes["HomePage"]
+    console.log(JogoID,BancoDeDados)
+    Copia.querySelector(".card-text").textContent = BancoDeDados.DicionarioDescricoes.HomePage
     Copia.querySelector(".card-img-top").src = BancoDeDados.LogoCard;
     Copia.querySelector(".BotatoRedirecionar").addEventListener("click" , () => {
         event.preventDefault();
@@ -38,7 +37,7 @@ async function CriarCard(BancoDeDados, JogoID) {
 }
 
 async function CarregarCardsInicias() {
-    const DB = await PuxarDados();
+    let  DB = await PuxarDados();
     for (let i = 0; i < DB.length; i++) {
         CriarCard(DB[i], i);
     }

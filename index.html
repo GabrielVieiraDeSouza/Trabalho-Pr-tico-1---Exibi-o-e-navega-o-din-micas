@@ -12,7 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="css.css">
+        <link rel="stylesheet" href="PaginaInicial.css">
     </head>
 
     <template id="TemplateCard">
@@ -30,13 +30,34 @@
         </div>
     </template>
 
+    <template id="TemplateBotõesCabeçalho">
+        <button class="Login mx-3 my-1 w-100 TemplateBotãoCabeçalhoLogin" style="visibility: hidden;">Login</button>
+        <button class="Login mx-3 my-1 w-100 TemplateBotãoCabeçalhoLogout" style="visibility: hidden;">Logout</button>
+        <button class="Login mx-3 my-1 w-100 TemplateBotãoCabeçalhoFavoritos"
+            style="visibility: hidden;">Favoritos</button>
+    </template>
+
+    <template id="CardCarrousel">
+        <div class="carousel-item active">
+            <a href="PaginaDeDetalhes/Forza_Horizon_6/Forza_Horizon_6.html?id=5"><img
+                    src="Images/ForzaHorizon6/Forza6.jpeg" class="d-block w-100 CarImg" alt="..."></a>
+            <div class="carousel-caption d-none d-md-block">
+                <h2 class="TituloCarrosel">Forza Horizon 6 </h2>
+                <p>Um rápido texto introdutorio do jogo.</p>
+            </div>
+        </div>
+    </template>
+
 <body>
     <header>
-        <div class="container py-2 align-items-center gap-3">
-            <div class="row">
-                <a href="/index.html" class="Logo col-6">
+        <div class="container py-2">
+            <div class="row align-items-center">
+                <a href="/index.html" class="Logo col-7">
                     <img src="/Images/Logo.png" alt="">
                 </a>
+                <div class="col-4  gap-3 " id="BotõesCabeçalho">
+
+                </div>
                 <input type="text" id="Search" class="w-100 my-2" placeholder="Digite o Jogo">
             </div>
         </div>
@@ -118,7 +139,8 @@
     </footer>
 
 
-    <script src="javascript.js"></script>
+    <script src="Scripts/Pagina Inicial/ProcessamentoPaginaInicial.js"></script>
+    <script src="/Scripts/Login/ValidarLogin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
