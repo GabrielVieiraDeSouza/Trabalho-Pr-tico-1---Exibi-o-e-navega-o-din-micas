@@ -50,22 +50,14 @@ html a {
 
 .card-img-top {
   height: 17rem;
-  object-fit: cover;
+  object-fit: fill;
 }
 
 
 
 .card-body {
   height: 18rem;
-  overflow-y: auto;
-  min-height: 0;
-  scrollbar-width: none; 
 }
-
-.card-body::-webkit-scrollbar {
-  display: none; 
-}
-
 
 
 .TituloCarrosel {
@@ -74,17 +66,4 @@ html a {
 
 .CarImg {
   border-radius: 16px;
-}
-
-.card-img-top {
-  height: 17.5rem;
-  object-fit: fill;
-}
-
-
-.ContainerCards{
-  background-color: #38383879;
-}
-.CartaMedia {
-  height: 26.25rem;
 }

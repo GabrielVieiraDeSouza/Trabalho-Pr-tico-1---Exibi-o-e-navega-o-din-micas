@@ -1,11 +1,13 @@
 const CorpoCardsContainerCards = document.getElementById("CorpoCardsContainerCards");
 const TemplateCard = document.getElementById("TemplateCard");
+let Logado = sessionStorage.getItem("login")
 
 document.addEventListener("DOMContentLoaded", () => {
+    sessionStorage.removeItem("cadastrado")
     CarregarCardsInicias();
+    ValidarLogin()
     const container = document.getElementById("CorpoCardsContainerCards");
     if (!container) return;
-
 });
  
 async function MetaURL(JogoID) {
@@ -41,4 +43,38 @@ async function CarregarCardsInicias() {
     for (let i = 0; i < DB.length; i++) {
         CriarCard(DB[i], i);
     }
+}
+
+
+
+
+
+//PARTE De Validação de  LOGIN
+function ValidarLogin(){
+    console.log("1")
+    let TemplateCabecalhoBotaoLogin = document.getElementById("TemplateBotõesCabeçalho").content.getElementById("TemplateBotãoCabeçalhoLogin").cloneNode(true)
+    let TemplateCabecalhoBotaoDeslogar = document.getElementById("TemplateBotõesCabeçalho").content.getElementById("TemplateBotãoCabeçalhoLogout").cloneNode(true)
+    let TemplateCabecalhoBotaoFavoritos = document.getElementById("TemplateBotõesCabeçalho").content.getElementById("TemplateBotãoCabeçalhoFavoritos").cloneNode(true)
+    let ContainerCabecalho = document.getElementById("BotõesCabeçalho")
+    if (Logado){
+        ContainerCabecalho.appendChild(TemplateCabecalhoBotaoFavoritos)
+        ContainerCabecalho.appendChild(TemplateCabecalhoBotaoDeslogar)
+        TemplateCabecalhoBotaoDeslogar.addEventListener("click", () =>{
+            DeslogarUsuarioLogado()
+        })
+        TemplateCabecalhoBotaoFavoritos.addEventListener("click", (event) => {
+            window.location.href = "/Favoritos/Favoritos.html"
+        })
+    } else {
+        ContainerCabecalho.appendChild(TemplateCabecalhoBotaoLogin)
+        TemplateCabecalhoBotaoLogin.addEventListener("click", () => {
+            window.location.href = "http://127.0.0.1:5500/Login's/Login.html"
+        })
+    }
+}
+
+
+function DeslogarUsuarioLogado(){
+    sessionStorage.removeItem("login")
+    window.location.href = "http://127.0.0.1:5500/Login's/Login.html"
 }
