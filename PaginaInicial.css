@@ -54,7 +54,7 @@ html a {
 
 /* ---------- Cabeçalho ---------- */
 
-#Search {
+.Search {
   background: var(--surface);
   border: 1px solid var(--line);
   color: var(--text);
@@ -70,11 +70,32 @@ html a {
   transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
 }
 
-#Search::placeholder {
+.SearchBotao{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: var(--font-body);
+  background-size: 1rem;
+  background-repeat: no-repeat;
+  background-position: 0.85rem center;
+
+  padding: 0.6rem 1rem 0.6rem 2.25rem;
+  border-radius: 999px;
+  font-size: 16px;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.SearchBotao,
+textarea,
+select{
+  font-family: var(--font-body)  !important
+}
+
+.Search::placeholder {
   color: var(--text-muted);
 }
 
-#Search:focus {
+.Search:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
@@ -284,16 +305,14 @@ html a {
   font-size: .9rem;
 }
 
-/* Botão de favoritar: cinza neutro em repouso, dourado ao interagir.
-   Se o JS já marcar um estado persistido (ex.: classe "ativo"/"favoritado"),
-   ajuste o seletor abaixo para deixá-lo sempre dourado. */
 .Favoritar {
-  filter: grayscale(1) brightness(1.4);
+  filter: grayscale(0) brightness(1.4);
   transition:  var(--ease), filter .2s var(--ease);
 }
 
 .Favoritar:hover,
 .Favoritar:focus-visible {
+  color: var(--accent);
   transform: scale(1.15) rotate(-6deg);
   filter: none;
 }

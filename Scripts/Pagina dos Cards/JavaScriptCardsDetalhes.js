@@ -1,62 +1,65 @@
-
-
 const ContainerSemelhantes = document.getElementById("ContainerSemelhantes")
 const TemplateCardSemelhante = document.getElementById("TemplateSemelhante")
 
-async function MetaURL(JogoID) {
-    let DB = await PuxarDados();
-    const JogoEscolhido = DB[JogoID];
-    window.location.href = "/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
+function PuxarDados() {
+    let DB = localStorage.getItem("Midia")
+    return DB ? JSON.parse(DB) : []
 }
 
-async function PuxarDados() {
-    let resultado = await fetch("http://localhost:3000/Midia")
-    let DB = (await resultado).json()
-    return DB
+
+function FormatarTexto(Texto) {
+    return (Texto || "").split("<>").join("<br>")
 }
 
-async function CarregarSemelhantes(JogoID) {
-    let DB = await PuxarDados()
+function MetaURL(JogoID) {
+    window.location.href = "/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID
+}
+
+function CarregarSemelhantes(JogoID) {
+    let DB = PuxarDados()
+    let JogoSemelhante = DB[JogoID]
+    if (!JogoSemelhante) return
+
     let Copia = TemplateCardSemelhante.content.cloneNode(true)
-    Copia.querySelector("#ImagemSemelhante").src = (DB[JogoID].LogoCard)
-    Copia.querySelector("#TituloSemelhante").textContent = DB[JogoID].Nome
-    Copia.querySelector("#EstudioSemelhante").textContent = DB[JogoID].Estudio
+    Copia.querySelector("#ImagemSemelhante").src = JogoSemelhante.LogoCard
+    Copia.querySelector("#TituloSemelhante").textContent = JogoSemelhante.Nome
+    Copia.querySelector("#EstudioSemelhante").textContent = JogoSemelhante.Estudio
     Copia.querySelector(".CartaMedia").id = JogoID
     Copia.querySelector(".CardsJogos").classList.remove("invisible")
-    console.log(ContainerSemelhantes)
-    Copia.querySelector(".BotatoRedirecionar").addEventListener("click", () => {
+
+    Copia.querySelector(".BotatoRedirecionar").addEventListener("click", (event) => {
         event.preventDefault()
         MetaURL(JogoID)
     })
+
     ContainerSemelhantes.appendChild(Copia)
-    
 }
 
-function RenderizarPagina(DB,JogoID){
+function RenderizarPagina(DB, JogoID) {
     const InfoJogo = DB[JogoID]
-    const TituloJogo = InfoJogo.Nome
-    const Sinopse = InfoJogo.DicionarioDescricoes.Sinopse
-    const DescricaoJogo = InfoJogo.DicionarioDescricoes.Descricao_Do_Jogo
-    const HistoriaEstudio = InfoJogo.DicionarioDescricoes.Historia_Do_Estudio
-    const LogoJogo = InfoJogo.LogoCard
-    const LinkTrailer = InfoJogo.DicionarioDescricoes.TrailerJogo
-    document.getElementById("TituloJogo").innerHTML = InfoJogo.Nome
-    document.getElementById("Sinopse").innerHTML = Sinopse
-    document.getElementById("DescricaoJogo").innerHTML = DescricaoJogo
-    document.getElementById("HistoriaDoEstudioTexto").innerHTML = HistoriaEstudio
-    document.getElementById("TrailerJogo").src = LinkTrailer
+    if (!InfoJogo) return
+
+    document.getElementById("TituloJogo").textContent = InfoJogo.Nome
+    document.getElementById("Sinopse").innerHTML = FormatarTexto(InfoJogo.DicionarioDescricoes.Sinopse)
+    document.getElementById("DescricaoJogo").innerHTML = FormatarTexto(InfoJogo.DicionarioDescricoes.Descricao_Do_Jogo)
+    document.getElementById("HistoriaDoEstudioTexto").innerHTML = FormatarTexto(InfoJogo.DicionarioDescricoes.Historia_Do_Estudio)
+    document.getElementById("TrailerJogo").src = InfoJogo.DicionarioDescricoes.TrailerJogo
     document.getElementById("LogoJogo").src = InfoJogo.LogoCard
-    console.log(DescricaoJogo)
 }
 
-
-window.onload = async () => {
+window.onload = () => {
     const SearchParams = new URLSearchParams(window.location.search)
     const JogoID = SearchParams.get("id")
-    const DB = await PuxarDados()
-    let Cont = 0;
-    RenderizarPagina(DB,JogoID)
-    DB[JogoID]["Semelhantes"].forEach((element) => {
-        CarregarSemelhantes(element)
+    const DB = PuxarDados()
+
+    RenderizarPagina(DB, JogoID)
+
+    let Semelhantes = (DB[JogoID] && DB[JogoID].Semelhantes) || []
+    Semelhantes.forEach((Indice) => {
+        CarregarSemelhantes(Indice)
     })
 }
+
+document.getElementById("Inicio").addEventListener("click",() =>{
+    window.location.href =  "/"
+})

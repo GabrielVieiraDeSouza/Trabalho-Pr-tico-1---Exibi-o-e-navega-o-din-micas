@@ -1,7 +1,5 @@
 let CadastroAberto = true
 
-// Garante que exista a base de usuários no LocalStorage, já com um
-// admin de exemplo (conforme sugestão do enunciado). Só roda uma vez.
 function InicializarUsuarios() {
     if (!localStorage.getItem("Usuarios")) {
         let UsuariosPadrao = [
@@ -91,13 +89,13 @@ function CadastrarUsuario() {
     DB.push(DadosUsuario)
     SalvarDadosUsuarios(DB)
 
-    sessionStorage.setItem("cadastrado", "true")  // Persiste no sessionStorage
+    sessionStorage.setItem("cadastrado", "true") 
     CadastroAberto = true
     AbrirTelaCadastro()
 }
 
 function AbrirTelaCadastro() {
-    let Cadastrado = sessionStorage.getItem("cadastrado") === "true"  // Lê do sessionStorage
+    let Cadastrado = sessionStorage.getItem("cadastrado") === "true" 
     let MensagemSucesso = Cadastrado ? "Usuário cadastrado com sucesso! Agora faça o login." : ""
 
     if (CadastroAberto) {
@@ -135,7 +133,7 @@ function AbrirTelaCadastro() {
 
         CadastroAberto = false
         document.getElementById("Cadastro").addEventListener("click", () => {
-            sessionStorage.removeItem("cadastrado")  // Limpa ao abrir cadastro novamente
+            sessionStorage.removeItem("cadastrado")  
             AbrirTelaCadastro()
         })
         document.getElementById("LogarBotao").addEventListener("click", () => {
