@@ -1,28 +1,44 @@
+/* =========================================================
+   WikiMedia — PaginaInicial.css (retocado)
+   Paleta: tons grafite-azulados + dourado (referência ao ⭐ de favoritos)
+   Tipografia: Rajdhani (display/jogos) + Inter (corpo) + JetBrains Mono (dados/legendas)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #14161a;
+  --surface: #1c1f25;
+  --surface-2: #242830;
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #f1efe9;
+  --text-muted: #9aa0ab;
+  --accent: #e2a13a;
+  --accent-strong: #f4b94c;
+  --accent-soft: rgba(226, 161, 58, 0.18);
+  --focus-ring: #6fb1e8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --font-display: 'Rajdhani', 'Trebuchet MS', sans-serif;
+  --font-body: 'Inter', 'Trebuchet MS', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-card: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
+  --ease: cubic-bezier(.2, .7, .3, 1);
+}
+
+/* ---------- Base ---------- */
+
 html body {
-  background-color: #212529;
-  color: white;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-#Search {
-  background: rgba(168, 168, 168, 0.212);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg');
-  background-size: 1rem;
-  background-repeat: no-repeat;
-  background-position: 0.5rem center;
-
-  padding-left: 30px;
-
-  border-radius: 4px;
-  font-size: 16px;
-}
-
-.BotoesCabecalho {
-    background: rgba(168, 168, 168, 0.212);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
+  background:
+    radial-gradient(circle at 18% -10%, rgba(226, 161, 58, 0.08), transparent 45%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
 }
 
 html a {
@@ -30,11 +46,58 @@ html a {
   color: inherit;
 }
 
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
 
-@media (min-width: 992px) {
-  .Logo {
-    margin: 4rem;
-  }
+/* ---------- Cabeçalho ---------- */
+
+#Search {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: var(--font-body);
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg');
+  background-size: 1rem;
+  background-repeat: no-repeat;
+  background-position: 0.85rem center;
+
+  padding: 0.6rem 1rem 0.6rem 2.25rem;
+  border-radius: 999px;
+  font-size: 16px;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+#Search::placeholder {
+  color: var(--text-muted);
+}
+
+#Search:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.BotoesCabecalho {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  border-radius: 999px !important;
+  transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+}
+
+.BotoesCabecalho:hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  transform: translateY(-1px);
 }
 
 @media (min-width: 992px) {
@@ -43,48 +106,243 @@ html a {
   }
 }
 
+/* ---------- Carrossel ---------- */
+
+#Carrosel .carousel {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.carousel-item {
+  position: relative;
+}
+
+/* Scrim para legibilidade da legenda, substitui o contorno de texto */
+.carousel-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(10, 11, 13, 0.85) 0%, rgba(10, 11, 13, 0.35) 45%, transparent 75%);
+  pointer-events: none;
+}
 
 .imgCarrosel {
   object-fit: initial;
 }
 
-.card-img-top {
-  height: 17rem;
+.CarImg {
+  border-radius: var(--radius-lg);
+  height: 32rem;
   object-fit: cover;
 }
 
+.carousel-caption {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  left: 6%;
+  right: 38%;
+  bottom: 3rem;
+}
 
+.carousel-caption::before {
+  content: "EM DESTAQUE";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .2em;
+  color: var(--accent-strong);
+  margin-bottom: .6rem;
+}
+
+.carousel-caption p {
+  color: var(--text-muted);
+  font-size: .95rem;
+  max-width: 32ch;
+}
+
+.TituloCarrosel {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.4rem;
+  letter-spacing: .01em;
+  -webkit-text-stroke: 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .55);
+}
+
+.carousel-indicators {
+  justify-content: flex-end;
+  margin-right: 2rem;
+  margin-bottom: 1.25rem;
+  gap: .4rem;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 2.25rem;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--line);
+  opacity: 1;
+  border: 0;
+  transition: background-color .2s var(--ease), width .2s var(--ease);
+}
+
+.carousel-indicators button.active {
+  background-color: var(--accent);
+  width: 3rem;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 3.25rem;
+  height: 3.25rem;
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%);
+  background: rgba(20, 22, 26, 0.55);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  opacity: .85;
+  transition: background .2s var(--ease), border-color .2s var(--ease), opacity .2s var(--ease);
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  opacity: 1;
+}
+
+.carousel-control-prev {
+  left: 1.5rem;
+}
+
+.carousel-control-next {
+  right: 1.5rem;
+}
+
+/* ---------- Cards de jogos ---------- */
+
+.ContainerCards {
+  background-color: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.CartaMedia {
+  height: 26.25rem;
+  background: var(--surface-2);
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+
+.CartaMedia:hover,
+.CartaMedia:focus-within {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--accent);
+}
+
+.card-img-top {
+  height: 17.5rem;
+  object-fit: cover;
+}
 
 .card-body {
   height: 18rem;
   overflow-y: auto;
   min-height: 0;
-  scrollbar-width: none; 
+  scrollbar-width: none;
+  font-family: var(--font-body);
 }
 
 .card-body::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
-
-
-.TituloCarrosel {
-  -webkit-text-stroke: 0.05rem #000000;
+.card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--text);
 }
 
-.CarImg {
-  border-radius: 16px;
+.card-subtitle {
+  font-family: var(--font-mono) !important;
+  font-size: .72rem !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text-muted) !important;
+  border-color: var(--line) !important;
 }
 
-.card-img-top {
-  height: 17.5rem;
-  object-fit: fill;
+.card-text {
+  color: var(--text-muted);
+  font-size: .9rem;
 }
 
-
-.ContainerCards{
-  background-color: #38383879;
+/* Botão de favoritar: cinza neutro em repouso, dourado ao interagir.
+   Se o JS já marcar um estado persistido (ex.: classe "ativo"/"favoritado"),
+   ajuste o seletor abaixo para deixá-lo sempre dourado. */
+.Favoritar {
+  filter: grayscale(1) brightness(1.4);
+  transition:  var(--ease), filter .2s var(--ease);
 }
-.CartaMedia {
-  height: 26.25rem;
+
+.Favoritar:hover,
+.Favoritar:focus-visible {
+  transform: scale(1.15) rotate(-6deg);
+  filter: none;
+}
+
+/* ---------- Rodapé ---------- */
+
+footer .nav-item a {
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  transition: color .2s var(--ease);
+}
+
+footer .nav-item a:hover {
+  color: var(--accent);
+}
+
+footer p,
+footer span {
+  color: var(--text-muted);
+}
+
+footer span {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+}
+
+footer h5 {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+footer img {
+  filter: grayscale(1) opacity(.7);
+  transition: filter .2s var(--ease);
+}
+
+footer a:hover img {
+  filter: none;
+}
+
+/* ---------- Acessibilidade ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }

@@ -16,7 +16,6 @@
         },
         "TrailerJogo": "https://www.youtube.com/embed/iUz3MAM8UH8?si=GcqZL5wBHYAYXR-j"
       },
-      "Meta": "/PaginaDeDetalhes/DeathStranding/DeathStranding.html",
       "Semelhantes": [
         1,
         2,
@@ -43,7 +42,6 @@
         },
         "TrailerJogo": "https://www.youtube.com/embed/etOOO9Sq7u8?si=-Bsjxh9Q0L2evLYi"
       },
-      "Meta": "/PaginaDeDetalhes/DeathStranding2/DeathStranding2.html",
       "Semelhantes": [
         0,
         2,
@@ -70,7 +68,6 @@
         },
         "TrailerJogo": "https://www.youtube.com/embed/C19ap2M7DDE?si=OZSoWqHELX9dk-aO"
       },
-      "Meta": "/PaginaDeDetalhes/Metal_Gear_V/Metal_Gear_V.html",
       "Semelhantes": [
         0,
         1,
@@ -96,7 +93,6 @@
         },
         "TrailerJogo": "https://www.youtube.com/embed/cGJ-vqsG4Js?si=XXj44esj-uLc73jk"
       },
-      "Meta": "/PaginaDeDetalhes/Metal_Gear_III/Metal_Gear_III.html",
       "Semelhantes": [
         4
       ],
@@ -120,7 +116,6 @@
         },
         "TrailerJogo": "https://www.youtube.com/embed/LRCa7ogaR2I?si=gsMlwa6eE0lVlEh5"
       },
-      "Meta": "/PaginaDeDetalhes/Guitar_Hero_Metallica/Guitar_Hero_Metallica.html",
       "Semelhantes": [],
       "LogoCard": "/Images/GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg",
       "Estudio": "Neversoft",
@@ -142,7 +137,6 @@
         },
         "TrailerJogo": "https://www.youtube.com/embed/c6O5J-8dz90?si=Gmm9094M_udxUSCC"
       },
-      "Meta": "/PaginaDeDetalhes/Forza_Horizon_6/Forza_Horizon_6.html",
       "Semelhantes": [],
       "LogoCard": "/Images/ForzaHorizon6/Background.jpg",
       "Estudio": "Playground Games",
@@ -168,92 +162,9 @@
         2,
         3
       ],
-      "Meta": "/PaginaDeDetalhes/LegoBatman_LODK/LegoBatman_LODK.html",
       "LogoCard": "/Images/LegoBatmanLODK/LegoBatmanLODK.jpeg",
       "Estudio": "TT Games",
       "id": "3COGD2m-iuM"
-    }
-  ],
-  "Usuarios": [
-    {
-      "Id": "187cb7e5-e097-4224-8bc7-b610c855e2b1",
-      "Login": "a",
-      "Senha": "123",
-      "Nome": "Administrador do Sistema",
-      "Admin": true,
-      "id": "SmFw2Qk7nL4"
-    },
-    {
-      "id": "u-BIX8u7psw",
-      "Login": "321321312",
-      "Senha": "321321",
-      "Nome": "321321",
-      "Email": {},
-      "Favoritos": [],
-      "Admin": false
-    },
-    {
-      "id": "2jL1FGTth0M",
-      "Login": "joao",
-      "Senha": "abc123",
-      "Nome": "Gabriel Vieira",
-      "Email": {},
-      "Favoritos": [],
-      "Admin": false
-    },
-    {
-      "id": "ZJxIdWhjJqQ",
-      "Login": "dsadas",
-      "Senha": "dsadas",
-      "Nome": "dsadsa",
-      "Email": {},
-      "Favoritos": [],
-      "Admin": false
-    },
-    {
-      "id": "i2Rvibny9hw",
-      "Login": "joaosad",
-      "Senha": "abc123",
-      "Nome": "dsad",
-      "Email": {},
-      "Favoritos": [],
-      "Admin": false
-    },
-    {
-      "id": "xV1GUrFjp4Y",
-      "Login": "joao2",
-      "Senha": "abc123",
-      "Nome": "3",
-      "Email": {},
-      "Favoritos": [],
-      "Admin": false
-    },
-    {
-      "id": "GnZRROGp-Ao",
-      "Login": "dsad",
-      "Senha": "dsadsa",
-      "Nome": "dsadsa",
-      "Email": "dsa",
-      "Favoritos": [],
-      "Admin": false
-    },
-    {
-      "id": "Zb0awL6X6fw",
-      "Login": "dsadsa",
-      "Senha": "dsa",
-      "Nome": "dsa",
-      "Email": "dsa",
-      "Favoritos": [],
-      "Admin": false
-    },
-    {
-      "id": "XqZPMbXE8OE",
-      "Login": "dsadsaw",
-      "Senha": "dsadsa",
-      "Nome": "dsadsa",
-      "Email": "dsadsa",
-      "Favoritos": [],
-      "Admin": false
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

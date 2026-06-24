@@ -4,11 +4,9 @@ const ContainerSemelhantes = document.getElementById("ContainerSemelhantes")
 const TemplateCardSemelhante = document.getElementById("TemplateSemelhante")
 
 async function MetaURL(JogoID) {
-    const DB = await PuxarDados()
-    console.log(JogoID)
-    const JogoEscolhido = DB[JogoID]
-    let URL = new URLSearchParams(JogoEscolhido.Meta)
-    window.location.href = JogoEscolhido.Meta + '?id=' + JogoID
+    let DB = await PuxarDados();
+    const JogoEscolhido = DB[JogoID];
+    window.location.href = "/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
 }
 
 async function PuxarDados() {
@@ -28,7 +26,6 @@ async function CarregarSemelhantes(JogoID) {
     console.log(ContainerSemelhantes)
     Copia.querySelector(".BotatoRedirecionar").addEventListener("click", () => {
         event.preventDefault()
-        console.log("Apertado")
         MetaURL(JogoID)
     })
     ContainerSemelhantes.appendChild(Copia)

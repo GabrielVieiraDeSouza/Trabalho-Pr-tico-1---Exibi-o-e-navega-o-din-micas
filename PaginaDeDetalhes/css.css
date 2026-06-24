@@ -1,147 +1,295 @@
+/* =========================================================
+   WikiMedia — css.css (Página de Detalhes, retocado)
+   Mesmo sistema visual da Página Inicial:
+   grafite-azulado + dourado (assinatura), Rajdhani + Inter + JetBrains Mono
+   ========================================================= */
 
-body {
-    background: linear-gradient(180deg, #1f232b, #13151d);
-    color: #eaeaea;
-    font-family: "Inter", "Segoe UI", sans-serif;
-    line-height: 1.6;
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #14161a;
+  --surface: #1c1f25;
+  --surface-2: #242830;
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #f1efe9;
+  --text-muted: #9aa0ab;
+  --accent: #e2a13a;
+  --accent-strong: #f4b94c;
+  --accent-soft: rgba(226, 161, 58, 0.18);
+  --focus-ring: #6fb1e8;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --font-display: 'Rajdhani', 'Trebuchet MS', sans-serif;
+  --font-body: 'Inter', 'Trebuchet MS', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-card: 0 18px 40px -16px rgba(0, 0, 0, 0.6);
+  --ease: cubic-bezier(.2, .7, .3, 1);
 }
 
+/* ---------- Base ---------- */
+
+body {
+  background:
+    radial-gradient(circle at 18% -10%, var(--accent-soft), transparent 45%),
+    linear-gradient(180deg, var(--surface), var(--bg));
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
 a {
-    text-decoration: none !important;
-    color: inherit !important;
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 a:hover,
 a:focus,
 a:visited {
-    text-decoration: none !important;
-    color: inherit !important;
-    outline: none;
+  text-decoration: none !important;
+  color: inherit !important;
+  outline: none;
 }
 
-
-
-
-
-#Search {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: white;
-
-    padding: 10px 12px 10px 35px;
-    border-radius: 10px;
-
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg');
-    background-size: 14px;
-    background-repeat: no-repeat;
-    background-position: 10px center;
-
-    outline: none;
-    transition: 0.3s;
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
-
-#Search:focus {
-    border-color: #402cda;
-    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-}
-
 
 h1, h2, h3, h4 {
-    font-weight: 700;
-    letter-spacing: 0.5px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 span {
-    color: #ffffff;
-    font-size: 1.05rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  font-family: var(--font-body);
 }
 
+/* ---------- Cabeçalho ---------- */
+
+#Search {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 10px 16px 10px 35px;
+  border-radius: 999px;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg');
+  background-size: 14px;
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  outline: none;
+  transition: border-color .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+#Search::placeholder {
+  color: var(--text-muted);
+}
+
+#Search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+@media (min-width: 992px) {
+  .Logo {
+    margin: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  span {
+    text-align: justify;
+  }
+
+  .Logo {
+    margin: 0.5rem;
+  }
+}
+
+/* ---------- Conteúdo principal ---------- */
+
+#TituloJogo {
+  font-size: 2.4rem;
+  letter-spacing: .01em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .5);
+}
+
+/* "Sinopse:" tratado como rótulo de ficha técnica, não como título grande */
+#Conteudo h4 {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
 
 .C1 {
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
 }
 
-.card {
-    background: #161a22;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 16px;
-    overflow: hidden;
-
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 35px rgba(0,0,0,0.5);
-}
-
-.card-img-top {
-    height: 18rem;
-    object-fit: cover;
-    transition: 0.3s;
-}
-
-.card:hover .card-img-top {
-    transform: scale(1.03);
-}
-
-
-.CartaMedia {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.CartaMedia .card-body {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-
-#TituloSemelhante {
-    font-size: 1.1rem;
-    font-weight: 600;
-    min-height: 3.5rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-#EstudioSemelhante {
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-
-
-section {
-    margin-top: 3rem;
-}
-
-
-
-footer {
-    color: #ffffff;
+.ratio.ratio-16x9 {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
 }
 
 #Conteudo,
 #HistoriaDoEstudio * {
-    color: #ffffff !important;
+  color: var(--text) !important;
 }
 
-@media (max-width: 992px) {
-    span {
-        text-align: justify;
-    }
+/* Divisor dourado sob os títulos de seção, ecoa os marcadores do carrossel da Home */
+section#HistoriaDoEstudio h2,
+section#Semelhantes h2,
+#Conteudo h3 {
+  text-align: center;
+  position: relative;
+  padding-bottom: .75rem;
+}
 
-    .Logo {
-        margin: 0.5rem;
-    }
+section#HistoriaDoEstudio h2::after,
+section#Semelhantes h2::after,
+#Conteudo h3::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--accent);
+  margin: .75rem auto 0;
+  border-radius: 2px;
+}
+
+section {
+  margin-top: 3rem;
+}
+
+#Creditos span {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: .9rem;
+  letter-spacing: .03em;
+}
+
+/* ---------- Cards de jogos semelhantes ---------- */
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--accent);
+}
+
+.card-img-top {
+  height: 18rem;
+  object-fit: cover;
+  transition: transform .3s var(--ease);
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.03);
+}
+
+.CartaMedia {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.CartaMedia .card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-body);
+}
+
+#TituloSemelhante {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+}
+
+#EstudioSemelhante {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+/* ---------- Rodapé ---------- */
+
+footer {
+  color: var(--text);
+}
+
+footer .nav-item a {
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  transition: color .2s var(--ease);
+}
+
+footer .nav-item a:hover {
+  color: var(--accent);
+}
+
+footer p,
+footer span {
+  color: var(--text-muted);
+}
+
+footer span {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+}
+
+footer h5 {
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+footer img {
+  filter: grayscale(1) opacity(.7);
+  transition: filter .2s var(--ease);
+}
+
+footer a:hover img {
+  filter: none;
+}
+
+/* ---------- Acessibilidade ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }

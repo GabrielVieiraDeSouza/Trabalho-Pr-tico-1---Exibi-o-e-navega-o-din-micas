@@ -1,52 +1,77 @@
 let CadastroAberto = true
 
-function LogarUsuario(Login) {
-    sessionStorage.setItem("login", Login)
+// Garante que exista a base de usuários no LocalStorage, já com um
+// admin de exemplo (conforme sugestão do enunciado). Só roda uma vez.
+function InicializarUsuarios() {
+    if (!localStorage.getItem("Usuarios")) {
+        let UsuariosPadrao = [
+            {
+                "id": crypto.randomUUID(),
+                "Login": "admin",
+                "Senha": "123",
+                "Nome": "Administrador do Sistema",
+                "Email": "admin@abc.com",
+                "Favoritos": [],
+                "Admin": true
+            },
+            {
+                "id": crypto.randomUUID(),
+                "Login": "user",
+                "Senha": "123",
+                "Nome": "Usuario Comum",
+                "Email": "user@abc.com",
+                "Favoritos": [],
+                "Admin": false
+            }
+        ]
+        localStorage.setItem("Usuarios", JSON.stringify(UsuariosPadrao))
+    }
+}
+
+function PuxarDadosUsuarios() {
+    let DB = localStorage.getItem("Usuarios")
+    return DB ? JSON.parse(DB) : []
+}
+
+function SalvarDadosUsuarios(DB) {
+    localStorage.setItem("Usuarios", JSON.stringify(DB))
+}
+
+function LogarUsuario(Usuario) {
+    sessionStorage.setItem("login", Usuario.Login)
+    sessionStorage.setItem("Admin", Usuario.Admin)
     sessionStorage.removeItem("cadastrado")
     window.location.href = "http://127.0.0.1:5500/index.html"
 }
 
-async function RealizarLogin() {
-    event.preventDefault()
-    const DB = await PuxarDadosUsuarios()
+function RealizarLogin() {
+    const DB = PuxarDadosUsuarios()
     let Usuario = document.getElementById("UsuarioCampo").value
     let Senha = document.getElementById("SenhaCampo").value
-    for (let i = 0; i < Object.keys(DB).length; i++) {
+
+    for (let i = 0; i < DB.length; i++) {
         if (DB[i].Login == Usuario && DB[i].Senha == Senha) {
             sessionStorage.removeItem("cadastrado")  // Limpa ao logar
-            LogarUsuario(Usuario)
+            LogarUsuario(DB[i])
             return
         }
     }
     MensagemLoginErrado()
 }
 
-async function PuxarDadosUsuarios() {
-    let resultado = await fetch("http://localhost:3000/Usuarios")
-    let DB = await resultado.json()
-    return DB
-}
-
-async function CadastrarUsuario() {
-    event.preventDefault()
+function CadastrarUsuario() {
     let Usuario = document.getElementById("UsuarioCampo").value
     let Senha = document.getElementById("SenhaCampo").value
     let Nome = document.getElementById("NomeCampo").value
     let Email = document.getElementById("EmailCampo").value
-    let resultado = await fetch("http://localhost:3000/Usuarios")
-    let DB = await resultado.json()
-    let UsuarioExiste = false
 
     if (Usuario == "" || Senha == "") {
         MensagemLoginErrado()
         return
     }
 
-    for (let i = 0; i <= Object.keys(DB).length - 1; i++) {
-        if (DB[i].Login == Usuario) {
-            UsuarioExiste = true
-        }
-    }
+    let DB = PuxarDadosUsuarios()
+    let UsuarioExiste = DB.some(u => u.Login == Usuario)
 
     if (UsuarioExiste) {
         MensagemUsuarioCadastrado()
@@ -63,11 +88,8 @@ async function CadastrarUsuario() {
         "Admin": false
     }
 
-    await fetch("http://localhost:3000/Usuarios", {
-        "method": "POST",
-        "headers": { "Content-Type": "application/json" },
-        "body": JSON.stringify(DadosUsuario)
-    })
+    DB.push(DadosUsuario)
+    SalvarDadosUsuarios(DB)
 
     sessionStorage.setItem("cadastrado", "true")  // Persiste no sessionStorage
     CadastroAberto = true
@@ -174,5 +196,6 @@ function MensagemLoginErrado() {
 }
 
 window.addEventListener("load", () => {
+    InicializarUsuarios()
     AbrirTelaCadastro()
 })
