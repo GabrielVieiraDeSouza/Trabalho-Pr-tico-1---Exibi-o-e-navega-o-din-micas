@@ -14,7 +14,7 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/iUz3MAM8UH8?si=GcqZL5wBHYAYXR-j"
                 },
                 "Semelhantes": [1, 2, 3, 4],
-                "LogoCard": "/Images/DeathStranding/Logo.jpeg",
+                "LogoCard": "assets/Images/DeathStranding/Logo.jpeg",
                 "Estudio": "Kojima Productions",
                 "id": "0"
             },
@@ -30,7 +30,7 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/etOOO9Sq7u8?si=-Bsjxh9Q0L2evLYi"
                 },
                 "Semelhantes": [0, 2, 3, 4],
-                "LogoCard": "/Images/DeathStranding2/DeathStranding2.jpeg",
+                "LogoCard": "/assets/Images///DeathStranding2/DeathStranding2.jpeg",
                 "Estudio": "Kojima Productions",
                 "id": "1"
             },
@@ -46,7 +46,7 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/C19ap2M7DDE?si=OZSoWqHELX9dk-aO"
                 },
                 "Semelhantes": [0, 1, 3],
-                "LogoCard": "/Images/Metal_Gear_V/Metal_Gear_V.jpeg",
+                "LogoCard": "/assets/Images///Metal_Gear_V/Metal_Gear_V.jpeg",
                 "Estudio": "Kojima Productions",
                 "id": "2"
             },
@@ -62,7 +62,7 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/cGJ-vqsG4Js?si=XXj44esj-uLc73jk"
                 },
                 "Semelhantes": [4],
-                "LogoCard": "/Images/Metal_Gear_III/Metal_Gear_III.jpeg",
+                "LogoCard": "/assets/Images///Metal_Gear_III/Metal_Gear_III.jpeg",
                 "Estudio": "Konami",
                 "id": "3"
             },
@@ -78,7 +78,7 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/LRCa7ogaR2I?si=gsMlwa6eE0lVlEh5"
                 },
                 "Semelhantes": [],
-                "LogoCard": "/Images/GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg",
+                "LogoCard": "/assets/Images///GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg",
                 "Estudio": "Neversoft",
                 "id": "4"
             },
@@ -94,7 +94,7 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/c6O5J-8dz90?si=Gmm9094M_udxUSCC"
                 },
                 "Semelhantes": [],
-                "LogoCard": "/Images/ForzaHorizon6/Background.jpg",
+                "LogoCard": "/assets/Images/ForzaHorizon6/Background.jpg",
                 "Estudio": "Playground Games",
                 "id": "5"
             },
@@ -110,7 +110,7 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/j5ha2VwHJCw?si=5SN4C3Zys5GFxiQ7"
                 },
                 "Semelhantes": [2, 3],
-                "LogoCard": "/Images/LegoBatmanLODK/LegoBatmanLODK.jpeg",
+                "LogoCard": "/assets/Images//LegoBatmanLODK/LegoBatmanLODK.jpeg",
                 "Estudio": "TT Games",
                 "id": "6"
             }
@@ -122,7 +122,7 @@ function InicializarMidia() {
 function DeslogarUsuarioLogado() {
     sessionStorage.removeItem("login")
     sessionStorage.removeItem("Admin")
-    window.location.href = "http://127.0.0.1:5500/Login's/Login.html"
+    window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
 }
 
 const CorpoCardsContainerCards = document.getElementById("CorpoCardsContainerCards");
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function MetaURL(JogoID) {
-    window.location.href = "/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
+    window.location.href = "/public/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
 }
 
 function PuxarDados() {
@@ -226,7 +226,7 @@ function CarregarCarrossel() {
         DivSlide.classList.remove("active")
         if (Posicao === 0) DivSlide.classList.add("active")
 
-        Slide.querySelector("a").href = "/PaginaDeDetalhes/PaginaDetalhes.html?id=" + Item.Indice
+        Slide.querySelector("a").href = "/public/PaginaDeDetalhes/PaginaDetalhes.html?id=" + Item.Indice
         Slide.querySelector(".CarImg").src = Item.Dados.LogoCard
         Slide.querySelector(".TituloCarrosel").textContent = Item.Dados.Nome
         Slide.querySelector(".carousel-caption p").textContent = Item.Dados.DicionarioDescricoes.HomePage
@@ -271,7 +271,7 @@ function CriarCard(BancoDeDados, JogoID) {
         event.preventDefault();
 
         if (!sessionStorage.getItem("login")) {
-            window.location.href = "http://127.0.0.1:5500/Login's/Login.html"
+            window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
             return
         }
 
@@ -303,15 +303,18 @@ function ValidarLogin() {
             DeslogarUsuarioLogado()
         })
         TemplateCabecalhoBotaoFavoritos.addEventListener("click", () => {
-            window.location.href = "/Favoritos/Favoritos.html"
+            window.location.href = "/public/Favoritos/Favoritos.html"
         })
         if (JSON.parse(sessionStorage.getItem("Admin")) === true){
             ContainerCabecalho.appendChild(TemplateBotaoModificar)
+            TemplateBotaoModificar.addEventListener("click",() =>{
+                window.location.href = "/public/CRUD/CRUD.html"
+            })
         }
     } else {
         ContainerCabecalho.appendChild(TemplateCabecalhoBotaoLogin)
         TemplateCabecalhoBotaoLogin.addEventListener("click", () => {
-            window.location.href = "http://127.0.0.1:5500/Login's/Login.html"
+            window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
         })
     }
 }
@@ -319,5 +322,5 @@ function ValidarLogin() {
 let Search = document.getElementById("SearchBotao")
 Search.addEventListener("click", () => {
     let SearchCampo = document.getElementById("Search")
-    window.location.href = "/Pesquisa/Pesquisa.html?Jogo=" + SearchCampo.value
+    window.location.href = "/public/Pesquisa/Pesquisa.html?Jogo=" + SearchCampo.value
 })

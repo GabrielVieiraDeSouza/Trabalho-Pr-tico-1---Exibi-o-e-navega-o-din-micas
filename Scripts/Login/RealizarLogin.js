@@ -39,7 +39,7 @@ function LogarUsuario(Usuario) {
     sessionStorage.setItem("login", Usuario.Login)
     sessionStorage.setItem("Admin", Usuario.Admin)
     sessionStorage.removeItem("cadastrado")
-    window.location.href = "http://127.0.0.1:5500/index.html"
+    window.location.href = "/"
 }
 
 function RealizarLogin() {

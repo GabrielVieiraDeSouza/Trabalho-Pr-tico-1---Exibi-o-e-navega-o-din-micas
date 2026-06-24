@@ -12,7 +12,7 @@ function FormatarTexto(Texto) {
 }
 
 function MetaURL(JogoID) {
-    window.location.href = "/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID
+    window.location.href = "/public/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID
 }
 
 function CarregarSemelhantes(JogoID) {

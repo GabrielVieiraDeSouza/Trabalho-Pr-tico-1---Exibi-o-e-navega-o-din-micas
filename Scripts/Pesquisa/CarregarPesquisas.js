@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function MetaURL(JogoID) {
-    window.location.href = "/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
+    window.location.href = "/public/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
 }
 
 function PuxarDados() {
@@ -52,7 +52,7 @@ function AlternarFavorito(JogoID) {
 function DeslogarUsuarioLogado() {
     sessionStorage.removeItem("login")
     sessionStorage.removeItem("Admin")
-    window.location.href = "http://127.0.0.1:5500/Login's/Login.html"
+    window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
 }
 
 function SalvarDadosUsuarios(DB) {
@@ -103,7 +103,7 @@ function CriarCard(id,BancoDeDados){
         event.preventDefault();
 
         if (!sessionStorage.getItem("login")) {
-            window.location.href = "http://127.0.0.1:5500/Login's/Login.html"
+            window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
             return
         }
 
