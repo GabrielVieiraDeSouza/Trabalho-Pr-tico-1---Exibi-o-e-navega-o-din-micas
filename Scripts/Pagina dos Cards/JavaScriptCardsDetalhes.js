@@ -1,5 +1,6 @@
 const ContainerSemelhantes = document.getElementById("ContainerSemelhantes")
 const TemplateCardSemelhante = document.getElementById("TemplateSemelhante")
+let Logado = sessionStorage.getItem("login")
 
 function PuxarDados() {
     let DB = localStorage.getItem("Midia")
@@ -58,8 +59,70 @@ window.onload = () => {
     Semelhantes.forEach((Indice) => {
         CarregarSemelhantes(Indice)
     })
+    ValidarLogin()
 }
 
-document.getElementById("Inicio").addEventListener("click",() =>{
-    window.location.href =  "/"
-})
+function DeslogarUsuarioLogado() {
+    sessionStorage.removeItem("login")
+    sessionStorage.removeItem("Admin")
+    window.location.href = "/public/Login's/Login.html"
+}
+function ValidarLogin() {
+    const ContainerCabecalho = document.getElementById("BotõesCabeçalho");
+    ContainerCabecalho.innerHTML = "";
+
+    const Logado = sessionStorage.getItem("login");
+    const EhAdmin = sessionStorage.getItem("Admin") === "true";
+
+    const TemplateBotoes = document.getElementById("TemplateBotõesCabeçalho").content;
+
+    const BotaoLogin = TemplateBotoes
+        .getElementById("TemplateBotãoCabeçalhoLogin")
+        .cloneNode(true);
+
+    const BotaoLogout = TemplateBotoes
+        .getElementById("TemplateBotãoCabeçalhoLogout")
+        .cloneNode(true);
+
+    const BotaoFavoritos = TemplateBotoes
+        .getElementById("TemplateBotãoCabeçalhoFavoritos")
+        .cloneNode(true);
+
+    const BotaoModificar = TemplateBotoes
+        .getElementById("TemplateModificarItens")
+        .cloneNode(true);
+
+
+    if (!Logado) {
+        ContainerCabecalho.appendChild(BotaoLogin);
+
+        BotaoLogin.addEventListener("click", () => {
+            window.location.href = "/public/Login's/Login.html";
+        });
+
+        return;
+    }
+
+    ContainerCabecalho.appendChild(BotaoFavoritos);
+    ContainerCabecalho.appendChild(BotaoLogout);
+
+    BotaoFavoritos.addEventListener("click", () => {
+        window.location.href = "/public/Favoritos/Favoritos.html";
+    });
+
+    BotaoLogout.addEventListener("click", () => {
+        DeslogarUsuarioLogado();
+    });
+
+
+    if (EhAdmin) {
+        ContainerCabecalho.appendChild(BotaoModificar);
+
+        BotaoModificar.addEventListener("click", () => {
+            window.location.href = "/public/CRUD/CRUD.html";
+        });
+    }
+
+    console.log("Logado:", Logado);
+    console.log("Admin:", EhAdmin);
+}

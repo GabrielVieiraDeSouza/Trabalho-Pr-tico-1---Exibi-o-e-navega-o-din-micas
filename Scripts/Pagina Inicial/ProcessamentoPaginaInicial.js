@@ -14,9 +14,9 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/iUz3MAM8UH8?si=GcqZL5wBHYAYXR-j"
                 },
                 "Semelhantes": [1, 2, 3, 4],
-                "LogoCard": "assets/Images/DeathStranding/Logo.jpeg",
+                "LogoCard": "/public/Images/DeathStranding/Logo.jpeg",
                 "Estudio": "Kojima Productions",
-                "id": "0"
+                "id": "mqfcbRnOnMY"
             },
             {
                 "Nome": "Death Stranding 2",
@@ -30,9 +30,9 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/etOOO9Sq7u8?si=-Bsjxh9Q0L2evLYi"
                 },
                 "Semelhantes": [0, 2, 3, 4],
-                "LogoCard": "/assets/Images///DeathStranding2/DeathStranding2.jpeg",
+                "LogoCard": "/public/Images/DeathStranding2/DeathStranding2.jpeg",
                 "Estudio": "Kojima Productions",
-                "id": "1"
+                "id": "oiuzKiWqqn8"
             },
             {
                 "Nome": "Metal Gear V The Phantom Pain",
@@ -46,9 +46,9 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/C19ap2M7DDE?si=OZSoWqHELX9dk-aO"
                 },
                 "Semelhantes": [0, 1, 3],
-                "LogoCard": "/assets/Images///Metal_Gear_V/Metal_Gear_V.jpeg",
+                "LogoCard": "/public/Images/Metal_Gear_V/Metal_Gear_V.jpeg",
                 "Estudio": "Kojima Productions",
-                "id": "2"
+                "id": "voP6fD_s-L4"
             },
             {
                 "Nome": "Metal Gear Solid III Snake Eater",
@@ -62,9 +62,9 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/cGJ-vqsG4Js?si=XXj44esj-uLc73jk"
                 },
                 "Semelhantes": [4],
-                "LogoCard": "/assets/Images///Metal_Gear_III/Metal_Gear_III.jpeg",
+                "LogoCard": "/public/Images/Metal_Gear_III/Metal_Gear_III.jpeg",
                 "Estudio": "Konami",
-                "id": "3"
+                "id": "GJhpnGXQRjU"
             },
             {
                 "Nome": "Guitar Hero Metallica",
@@ -78,9 +78,9 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/LRCa7ogaR2I?si=gsMlwa6eE0lVlEh5"
                 },
                 "Semelhantes": [],
-                "LogoCard": "/assets/Images///GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg",
+                "LogoCard": "/public/Images/GuitarHeroMetallica/Guitar_Hero_Metallicajpeg.jpeg",
                 "Estudio": "Neversoft",
-                "id": "4"
+                "id": "CJrUPADWgTk"
             },
             {
                 "Nome": "Forza Horizon 6",
@@ -94,9 +94,9 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/c6O5J-8dz90?si=Gmm9094M_udxUSCC"
                 },
                 "Semelhantes": [],
-                "LogoCard": "/assets/Images/ForzaHorizon6/Background.jpg",
+                "LogoCard": "/public/Images/ForzaHorizon6/Background.jpg",
                 "Estudio": "Playground Games",
-                "id": "5"
+                "id": "70LmGWv1kis"
             },
             {
                 "Nome": "Batman Legacy of The Dark Knight",
@@ -110,121 +110,219 @@ function InicializarMidia() {
                     "TrailerJogo": "https://www.youtube.com/embed/j5ha2VwHJCw?si=5SN4C3Zys5GFxiQ7"
                 },
                 "Semelhantes": [2, 3],
-                "LogoCard": "/assets/Images//LegoBatmanLODK/LegoBatmanLODK.jpeg",
+                "LogoCard": "/public/Images/LegoBatmanLODK/LegoBatmanLODK.jpeg",
                 "Estudio": "TT Games",
-                "id": "6"
+                "id": "3COGD2m-iuM"
             }
         ]
         localStorage.setItem("Midia", JSON.stringify(MidiaPadrao))
     }
 }
 
+
 function DeslogarUsuarioLogado() {
     sessionStorage.removeItem("login")
     sessionStorage.removeItem("Admin")
-    window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
+    window.location.href = "/public/Login's/Login.html"
 }
 
-const CorpoCardsContainerCards = document.getElementById("CorpoCardsContainerCards");
-const TemplateCard = document.getElementById("TemplateCard");
-const TemplateCarrossel = document.getElementById("CardCarrousel");
-const CarrosselElemento = document.getElementById("carouselExampleCaptions");
+
+let CorpoCardsContainerCards = document.getElementById("CorpoCardsContainerCards")
+let TemplateCard = document.getElementById("TemplateCard")
+let TemplateCarrossel = document.getElementById("CardCarrousel")
+let CarrosselElemento = document.getElementById("carouselExampleCaptions")
 let Logado = sessionStorage.getItem("login")
 
-document.addEventListener("DOMContentLoaded", () => {
+
+document.addEventListener("DOMContentLoaded", function () {
     sessionStorage.removeItem("cadastrado")
     InicializarMidia()
-    CarregarCardsInicias();
-    CarregarCarrossel();
-    ValidarLogin();
-});
+    CarregarCardsInicias()
+    CarregarCarrossel()
+    ValidarLogin()
+    LigarCampoDePesquisa()
+    MontarGrafico()
+})
+
 
 function MetaURL(JogoID) {
-    window.location.href = "/public/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID;
+    window.location.href = "/public/PaginaDeDetalhes/PaginaDetalhes.html" + '?id=' + JogoID
 }
+
 
 function PuxarDados() {
-    let DB = localStorage.getItem("Midia")
-    return DB ? JSON.parse(DB) : []
+    let DadosSalvos = localStorage.getItem("Midia")
+
+    if (DadosSalvos) {
+        return JSON.parse(DadosSalvos)
+    } else {
+        return []
+    }
 }
+
 
 function PuxarDadosUsuarios() {
-    let DB = localStorage.getItem("Usuarios")
-    return DB ? JSON.parse(DB) : []
+    let DadosSalvos = localStorage.getItem("Usuarios")
+
+    if (DadosSalvos) {
+        return JSON.parse(DadosSalvos)
+    } else {
+        return []
+    }
 }
 
-function SalvarDadosUsuarios(DB) {
-    localStorage.setItem("Usuarios", JSON.stringify(DB))
+
+function SalvarDadosUsuarios(ListaDeUsuarios) {
+    localStorage.setItem("Usuarios", JSON.stringify(ListaDeUsuarios))
 }
+
+
 
 function BuscarUsuarioLogado() {
     let LoginAtual = sessionStorage.getItem("login")
-    if (!LoginAtual) return null
-    return PuxarDadosUsuarios().find(Usuario => Usuario.Login == LoginAtual) || null
+
+    if (!LoginAtual) {
+        return null
+    }
+
+    let ListaDeUsuarios = PuxarDadosUsuarios()
+
+    for (let i = 0; i < ListaDeUsuarios.length; i++) {
+        if (ListaDeUsuarios[i].Login == LoginAtual) {
+            return ListaDeUsuarios[i]
+        }
+    }
+
+    return null
 }
+
 
 function EhFavorito(JogoID) {
     let Usuario = BuscarUsuarioLogado()
-    if (!Usuario) return false
-    return Usuario.Favoritos.some(id => String(id) === String(JogoID))
+
+    if (!Usuario) {
+        return false
+    }
+
+    for (let i = 0; i < Usuario.Favoritos.length; i++) {
+        if (String(Usuario.Favoritos[i]) === String(JogoID)) {
+            return true
+        }
+    }
+
+    return false
 }
+
 
 function AlternarFavorito(JogoID) {
     let LoginAtual = sessionStorage.getItem("login")
-    if (!LoginAtual) return null
 
-    let DB = PuxarDadosUsuarios()
-    let Usuario = DB.find(u => u.Login == LoginAtual)
-    if (!Usuario) return null
+    if (!LoginAtual) {
+        return null
+    }
 
-    let JaEhFavorito = Usuario.Favoritos.some(id => String(id) === String(JogoID))
+    let ListaDeUsuarios = PuxarDadosUsuarios()
+    let Usuario = null
+
+    for (let i = 0; i < ListaDeUsuarios.length; i++) {
+        if (ListaDeUsuarios[i].Login == LoginAtual) {
+            Usuario = ListaDeUsuarios[i]
+        }
+    }
+
+    if (!Usuario) {
+        return null
+    }
+
+    let JaEhFavorito = false
+
+    for (let i = 0; i < Usuario.Favoritos.length; i++) {
+        if (String(Usuario.Favoritos[i]) === String(JogoID)) {
+            JaEhFavorito = true
+        }
+    }
 
     if (JaEhFavorito) {
-        Usuario.Favoritos = Usuario.Favoritos.filter(id => String(id) !== String(JogoID))
+        let NovaListaDeFavoritos = []
+
+        for (let i = 0; i < Usuario.Favoritos.length; i++) {
+            if (String(Usuario.Favoritos[i]) !== String(JogoID)) {
+                NovaListaDeFavoritos.push(Usuario.Favoritos[i])
+            }
+        }
+
+        Usuario.Favoritos = NovaListaDeFavoritos
     } else {
         Usuario.Favoritos.push(JogoID)
     }
 
-    SalvarDadosUsuarios(DB)
-    return !JaEhFavorito
+    SalvarDadosUsuarios(ListaDeUsuarios)
+
+    if (JaEhFavorito) {
+        return false
+    } else {
+        return true
+    }
 }
 
-
-function EscolherItensDoCarrossel(DB) {
+function EscolherItensDoCarrossel(ListaDeJogos) {
     let Usuario = BuscarUsuarioLogado()
 
     if (Usuario && Usuario.Favoritos.length > 0) {
-        let Favoritados = Usuario.Favoritos
-            .map(Indice => ({ Indice: Indice, Dados: DB[Indice] }))
-            .filter(Item => Item.Dados)
+        let ItensFavoritados = []
 
-        if (Favoritados.length > 0) return Favoritados
+        for (let i = 0; i < Usuario.Favoritos.length; i++) {
+            let Indice = Usuario.Favoritos[i]
+            let DadosDoJogo = ListaDeJogos[Indice]
+
+            if (DadosDoJogo) {
+                ItensFavoritados.push({ Indice: Indice, Dados: DadosDoJogo })
+            }
+        }
+
+        if (ItensFavoritados.length > 0) {
+            return ItensFavoritados
+        }
     }
 
-    if (DB.length === 0) return []
+    if (ListaDeJogos.length === 0) {
+        return []
+    }
 
-    let IndiceAleatorio = Math.floor(Math.random() * DB.length)
-    return [{ Indice: IndiceAleatorio, Dados: DB[IndiceAleatorio] }]
+    let IndiceAleatorio = Math.floor(Math.random() * ListaDeJogos.length)
+    let ItemAleatorio = { Indice: IndiceAleatorio, Dados: ListaDeJogos[IndiceAleatorio] }
+
+    return [ItemAleatorio]
 }
 
-function CarregarCarrossel() {
-    if (!TemplateCarrossel || !CarrosselElemento) return
 
-    let DB = PuxarDados()
-    let Itens = EscolherItensDoCarrossel(DB)
+function CarregarCarrossel() {
+    if (!TemplateCarrossel || !CarrosselElemento) {
+        return
+    }
+
+    let ListaDeJogos = PuxarDados()
+    let Itens = EscolherItensDoCarrossel(ListaDeJogos)
 
     let ContainerSlides = CarrosselElemento.querySelector(".carousel-inner")
     let ContainerIndicadores = CarrosselElemento.querySelector(".carousel-indicators")
 
     ContainerSlides.innerHTML = ""
-    if (ContainerIndicadores) ContainerIndicadores.innerHTML = ""
 
-    Itens.forEach((Item, Posicao) => {
+    if (ContainerIndicadores) {
+        ContainerIndicadores.innerHTML = ""
+    }
+
+    for (let Posicao = 0; Posicao < Itens.length; Posicao++) {
+        let Item = Itens[Posicao]
         let Slide = TemplateCarrossel.content.cloneNode(true)
         let DivSlide = Slide.querySelector(".carousel-item")
 
         DivSlide.classList.remove("active")
-        if (Posicao === 0) DivSlide.classList.add("active")
+
+        if (Posicao === 0) {
+            DivSlide.classList.add("active")
+        }
 
         Slide.querySelector("a").href = "/public/PaginaDeDetalhes/PaginaDetalhes.html?id=" + Item.Indice
         Slide.querySelector(".CarImg").src = Item.Dados.LogoCard
@@ -239,88 +337,204 @@ function CarregarCarrossel() {
             Indicador.setAttribute("data-bs-target", "#" + CarrosselElemento.id)
             Indicador.setAttribute("data-bs-slide-to", String(Posicao))
             Indicador.setAttribute("aria-label", "Slide " + (Posicao + 1))
+
             if (Posicao === 0) {
                 Indicador.classList.add("active")
                 Indicador.setAttribute("aria-current", "true")
             }
+
             ContainerIndicadores.appendChild(Indicador)
         }
-    })
+    }
 
     let InstanciaAnterior = bootstrap.Carousel.getInstance(CarrosselElemento)
-    if (InstanciaAnterior) InstanciaAnterior.dispose()
+
+    if (InstanciaAnterior) {
+        InstanciaAnterior.dispose()
+    }
+
     new bootstrap.Carousel(CarrosselElemento)
 }
 
-function CriarCard(BancoDeDados, JogoID) {
-    let Copia = TemplateCard.content.cloneNode(true);
-    Copia.querySelector(".card-title").textContent = BancoDeDados.Nome;
-    Copia.querySelector(".CartaMedia").id = JogoID;
-    Copia.querySelector(".card-subtitle").textContent = BancoDeDados.Estudio;
-    Copia.querySelector(".card-text").textContent = BancoDeDados.DicionarioDescricoes.HomePage
-    Copia.querySelector(".card-img-top").src = BancoDeDados.LogoCard;
 
-    Copia.querySelector(".BotatoRedirecionar").addEventListener("click", (event) => {
-        event.preventDefault();
+function CriarCard(BancoDeDados, JogoID) {
+    let Copia = TemplateCard.content.cloneNode(true)
+    Copia.querySelector(".card-title").textContent = BancoDeDados.Nome
+    Copia.querySelector(".CartaMedia").id = JogoID
+    Copia.querySelector(".card-subtitle").textContent = BancoDeDados.Estudio
+    Copia.querySelector(".card-text").textContent = BancoDeDados.DicionarioDescricoes.HomePage
+    Copia.querySelector(".card-img-top").src = BancoDeDados.LogoCard
+
+    let BotaoAbrirJogo = Copia.querySelector(".BotatoRedirecionar")
+
+    BotaoAbrirJogo.addEventListener("click", function (event) {
+        event.preventDefault()
         MetaURL(JogoID)
     })
 
     let BotaoFavoritar = Copia.querySelector(".Favoritar")
-    BotaoFavoritar.textContent = EhFavorito(JogoID) ? "⭐" : "☆"
-    BotaoFavoritar.addEventListener("click", (event) => {
-        event.preventDefault();
+
+    if (EhFavorito(JogoID)) {
+        BotaoFavoritar.textContent = "⭐"
+    } else {
+        BotaoFavoritar.textContent = "☆"
+    }
+
+    BotaoFavoritar.addEventListener("click", function (event) {
+        event.preventDefault()
 
         if (!sessionStorage.getItem("login")) {
-            window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
+            window.location.href = "/public/Login's/Login.html"
             return
         }
 
         let Ativo = AlternarFavorito(JogoID)
-        BotaoFavoritar.textContent = Ativo ? "⭐" : "☆"
+
+        if (Ativo) {
+            BotaoFavoritar.textContent = "⭐"
+        } else {
+            BotaoFavoritar.textContent = "☆"
+        }
+
         CarregarCarrossel()
     })
 
-    CorpoCardsContainerCards.appendChild(Copia);
+    CorpoCardsContainerCards.appendChild(Copia)
 }
 
+
 function CarregarCardsInicias() {
-    let DB = PuxarDados();
-    for (let i = 0; i < DB.length; i++) {
-        CriarCard(DB[i], i);
+    let ListaDeJogos = PuxarDados()
+
+    for (let i = 0; i < ListaDeJogos.length; i++) {
+        CriarCard(ListaDeJogos[i], i)
     }
 }
 
+
+
+function PesquisarJogos() {
+    let CampoDeBusca = document.getElementById("Search")
+    let TextoDigitado = CampoDeBusca.value.toLowerCase()
+
+    let TodosOsCards = document.querySelectorAll(".CartaMedia")
+
+    for (let i = 0; i < TodosOsCards.length; i++) {
+        let CardAtual = TodosOsCards[i]
+
+        let Titulo = CardAtual.querySelector(".card-title").textContent.toLowerCase()
+        let Descricao = CardAtual.querySelector(".card-text").textContent.toLowerCase()
+
+        let EstaNoTitulo = Titulo.indexOf(TextoDigitado) !== -1
+        let EstaNaDescricao = Descricao.indexOf(TextoDigitado) !== -1
+
+        let ColunaDoCard = CardAtual.parentElement
+
+        if (EstaNoTitulo || EstaNaDescricao) {
+            ColunaDoCard.style.display = ""
+        } else {
+            ColunaDoCard.style.display = "none"
+        }
+    }
+}
+
+
+function LigarCampoDePesquisa() {
+    let CampoDeBusca = document.getElementById("Search")
+
+    if (!CampoDeBusca) {
+        return
+    }
+
+    CampoDeBusca.addEventListener("input", function () {
+        PesquisarJogos()
+    })
+}
+
+
 function ValidarLogin() {
-    let TemplateCabecalhoBotaoLogin = document.getElementById("TemplateBotõesCabeçalho").content.getElementById("TemplateBotãoCabeçalhoLogin").cloneNode(true)
-    let TemplateCabecalhoBotaoDeslogar = document.getElementById("TemplateBotõesCabeçalho").content.getElementById("TemplateBotãoCabeçalhoLogout").cloneNode(true)
-    let TemplateCabecalhoBotaoFavoritos = document.getElementById("TemplateBotõesCabeçalho").content.getElementById("TemplateBotãoCabeçalhoFavoritos").cloneNode(true)
-    let TemplateBotaoModificar = document.getElementById("TemplateBotõesCabeçalho").content.getElementById("TemplateModificarItens").cloneNode(true)
+    let TemplateBotoes = document.getElementById("TemplateBotõesCabeçalho").content
+    let TemplateCabecalhoBotaoLogin = TemplateBotoes.getElementById("TemplateBotãoCabeçalhoLogin").cloneNode(true)
+    let TemplateCabecalhoBotaoDeslogar = TemplateBotoes.getElementById("TemplateBotãoCabeçalhoLogout").cloneNode(true)
+    let TemplateCabecalhoBotaoFavoritos = TemplateBotoes.getElementById("TemplateBotãoCabeçalhoFavoritos").cloneNode(true)
+    let TemplateCabecalhoBotaoCadastro = TemplateBotoes.getElementById("TemplateModificarItens").cloneNode(true)
     let ContainerCabecalho = document.getElementById("BotõesCabeçalho")
+
     if (Logado) {
+        
         ContainerCabecalho.appendChild(TemplateCabecalhoBotaoFavoritos)
         ContainerCabecalho.appendChild(TemplateCabecalhoBotaoDeslogar)
-        TemplateCabecalhoBotaoDeslogar.addEventListener("click", () => {
+
+        TemplateCabecalhoBotaoDeslogar.addEventListener("click", function () {
             DeslogarUsuarioLogado()
         })
-        TemplateCabecalhoBotaoFavoritos.addEventListener("click", () => {
+        
+        TemplateCabecalhoBotaoFavoritos.addEventListener("click", function () {
             window.location.href = "/public/Favoritos/Favoritos.html"
         })
-        if (JSON.parse(sessionStorage.getItem("Admin")) === true){
-            ContainerCabecalho.appendChild(TemplateBotaoModificar)
-            TemplateBotaoModificar.addEventListener("click",() =>{
+
+        let EhAdmin = sessionStorage.getItem("Admin") === "true"
+
+        if (EhAdmin && TemplateCabecalhoBotaoCadastro) {
+            let BotaoCadastro = TemplateCabecalhoBotaoCadastro.cloneNode(true)
+            ContainerCabecalho.appendChild(BotaoCadastro)
+
+            BotaoCadastro.addEventListener("click", function () {
                 window.location.href = "/public/CRUD/CRUD.html"
             })
         }
+        console.log("Botões")
     } else {
         ContainerCabecalho.appendChild(TemplateCabecalhoBotaoLogin)
-        TemplateCabecalhoBotaoLogin.addEventListener("click", () => {
-            window.location.href = "http://127.0.0.1:5500/public/Login's/Login.html"
+
+        TemplateCabecalhoBotaoLogin.addEventListener("click", function () {
+            window.location.href = "/public/Login's/Login.html"
         })
     }
 }
 
-let Search = document.getElementById("SearchBotao")
-Search.addEventListener("click", () => {
-    let SearchCampo = document.getElementById("Search")
-    window.location.href = "/public/Pesquisa/Pesquisa.html?Jogo=" + SearchCampo.value
-})
+function MontarGrafico(){
+    const midias = JSON.parse(localStorage.getItem("Midia")) || [];
+    const estudios = {};
+
+    midias.forEach(jogo => {
+        const estudio = jogo.Estudio?.trim() || "Desconhecido";
+
+        if (!estudios[estudio]) {
+            estudios[estudio] = 0;
+        }
+
+        estudios[estudio]++;
+    });
+
+    const pontos = Object.entries(estudios)
+        .map(([estudio, quantidade]) => ({
+            name: estudio,
+            y: quantidade
+        }))
+        .sort((a, b) => b.y - a.y);
+
+    JSC.Chart('chartDiv', {
+        type: 'column',
+        title_label_text: 'Quantidade de Jogos por Estúdio',
+        legend_visible: false,
+        
+        title:{
+            text: "Quantia de jogos por estudio",
+            align: 'center',
+            visible: true,
+        },
+
+        series: [{
+            name: 'Jogos',
+            points: pontos
+        }],
+
+        defaultPoint: {
+            tooltip: `
+                <b>%name</b><br/>
+                Jogos cadastrados: %yValue
+            `
+        }
+    });
+}

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>WikiMedia</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/CRUD.css">
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WikiMedia - CRUD</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/CRUD.css">
+</head>
+
+<body>
+
 
     <template id="TemplateCard">
         <div class="col-md-6 col-12 py-3 CardsJogos">
@@ -36,39 +38,160 @@
             id="TemplateBotãoCabeçalhoFavoritos">Favoritos</button>
     </template>
 
-
-<body>
     <header>
         <div class="container py-2">
             <div class="row align-items-center">
                 <a href="/index.html" class="Logo col-7">
                     <img src="/assets/Images/Logo.png" alt="">
                 </a>
-                <div class="col-4  gap-3 " id="BotõesCabeçalho">
-
+                <div class="col-4 gap-3" id="BotõesCabeçalho">
                 </div>
-                <input type="text" id="Search" class="w-100 my-2" placeholder="Digite o Jogo">
             </div>
         </div>
     </header>
-    <!-- CCarrousel -->
+
     <div class="container-fluid">
         <h5 class="text-center fs-1 my-3">CRUD</h5>
-        <div class="row  my-5 mx-5" id="CorpoCardsContainerCards">
-        
+
+
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" id="BotoesCRUD">
+            <button class="btn btn-primary" id="BotaoAdicionarJogo">Adicionar Jogo</button>
+            <button class="btn btn-warning" id="BotaoAlterarJogo">Alterar Informações de Jogo</button>
+            <button class="btn btn-danger" id="BotaoRemoverJogo">Remover Jogo</button>
         </div>
 
+        <div class="row my-5 mx-5" id="CorpoCardsContainerCards">
         </div>
     </div>
 
 
+    <div class="modal fade" id="ModalAdicionarJogo" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar novo jogo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="FormularioAdicionarJogo">
+                        <div class="mb-3">
+                            <label class="form-label">Nome do jogo</label>
+                            <input type="text" class="form-control" id="CampoNomeNovoJogo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Estúdio</label>
+                            <input type="text" class="form-control" id="CampoEstudioNovoJogo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Caminho da imagem do card</label>
+                            <input type="text" class="form-control" id="CampoLogoNovoJogo"
+                                placeholder="/Images/Pasta/Imagem.jpeg" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Texto curto (aparece no card e no carrossel)</label>
+                            <textarea class="form-control" id="CampoHomePageNovoJogo" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Sinopse</label>
+                            <textarea class="form-control" id="CampoSinopseNovoJogo" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descrição do jogo</label>
+                            <textarea class="form-control" id="CampoDescricaoNovoJogo" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">História do estúdio</label>
+                            <textarea class="form-control" id="CampoHistoriaNovoJogo" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Link do trailer (embed do YouTube)</label>
+                            <input type="text" class="form-control" id="CampoTrailerNovoJogo"
+                                placeholder="https://www.youtube.com/embed/...">
+                        </div>
+                        <div id="MensagemAdicionarJogo" class="text-danger mb-2"></div>
+                        <button type="submit" class="btn btn-primary w-100">Salvar novo jogo</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="ModalRemoverJogo" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Remover jogo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Escolha o jogo que deseja remover</label>
+                    <select class="form-select mb-3" id="SeletorJogoRemover"></select>
+                    <div id="MensagemRemoverJogo" class="text-danger mb-2"></div>
+                    <button type="button" class="btn btn-danger w-100" id="BotaoConfirmarRemocao">Confirmar
+                        exclusão</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <div class="modal fade" id="ModalAlterarJogo" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Alterar informações do jogo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">Escolha o jogo que deseja alterar</label>
+                    <select class="form-select mb-3" id="SeletorJogoAlterar"></select>
+
+                    <form id="FormularioAlterarJogo">
+                        <div class="mb-3">
+                            <label class="form-label">Nome do jogo</label>
+                            <input type="text" class="form-control" id="CampoNomeAlterar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Estúdio</label>
+                            <input type="text" class="form-control" id="CampoEstudioAlterar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Caminho da imagem do card</label>
+                            <input type="text" class="form-control" id="CampoLogoAlterar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Texto curto (aparece no card e no carrossel)</label>
+                            <textarea class="form-control" id="CampoHomePageAlterar" rows="2" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Sinopse</label>
+                            <textarea class="form-control" id="CampoSinopseAlterar" rows="2"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descrição do jogo</label>
+                            <textarea class="form-control" id="CampoDescricaoAlterar" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">História do estúdio</label>
+                            <textarea class="form-control" id="CampoHistoriaAlterar" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Link do trailer (embed do YouTube)</label>
+                            <input type="text" class="form-control" id="CampoTrailerAlterar">
+                        </div>
+                        <div id="MensagemAlterarJogo" class="text-danger mb-2"></div>
+                        <button type="submit" class="btn btn-warning w-100">Salvar alterações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <footer>
         <div class="px-5">
             <footer class="py-3 my-4">
                 <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="#" class=" px-2" id="Inicio">Inicio</a></li>
+                    <li class="nav-item"><a href="/index.html" class="px-2" id="Inicio">Inicio</a></li>
                 </ul>
                 <p class="text-center">©2026, WikiMedia</p>
                 <h5 class="text-center">Gabriel Vieira de Souza</h5>
@@ -79,9 +202,12 @@
         </div>
     </footer>
 
+    <script src="/Scripts/CRUD/crud.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+    <script src="/Scripts/CRUD/ProcessamentoCRUD.js"></script>
+
 </body>
 
 </html>
