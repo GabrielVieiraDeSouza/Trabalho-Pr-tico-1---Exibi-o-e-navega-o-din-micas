@@ -64,6 +64,10 @@ function CarregarFavoritos() {
     let Midia = JSON.parse(localStorage.getItem("Midia"))
     let JogosFavoritos = Object.values(DadosUsuario.Favoritos)
     console.log("Favoritos", JogosFavoritos)
+    if (Object.keys(DadosUsuario.Favoritos).length == 0) {
+        document.getElementById("Mensagem").textContent = " Você ainda não possui itens favoritos cadastrados."
+        return
+    }
     JogosFavoritos.forEach(element =>{
         CriarCard(element,Midia[element])
     })
